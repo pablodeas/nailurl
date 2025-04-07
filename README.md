@@ -5,7 +5,7 @@
 
 ---
 
-![showcase](src/nailurl0.gif)
+![showcase](./src/nailurl0.gif)
 
 ---
 
