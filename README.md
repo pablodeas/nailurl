@@ -5,6 +5,10 @@
 
 ---
 
+![showcase](src/nailurl0.mp4)
+
+---
+
 ## Funcionalidades
 - Encurtar URLs longas.
 - Redirecionar URLs encurtadas para os links originais.
