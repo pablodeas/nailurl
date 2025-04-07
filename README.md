@@ -1,49 +1,98 @@
-Para iniciar sua aplicação com Docker após ter configurado seu Dockerfile e docker-compose.yml, siga estes passos:
+# NailURL
 
-1. Primeiro, certifique-se de estar no diretório do projeto que contém os arquivos Dockerfile e docker-compose.yml
+## Descrição do Projeto
+**NailURL** é um encurtador de URLs simples desenvolvido com Flask e SQLAlchemy. Ele permite que os usuários insiram URLs longas e obtenham versões encurtadas que redirecionam para os links originais.
 
-2. Construa e inicie os contêineres com o comando:
+---
+
+## Funcionalidades
+- Encurtar URLs longas.
+- Redirecionar URLs encurtadas para os links originais.
+- Interface simples e intuitiva.
+
+---
+
+## Tecnologias Utilizadas
+- **Python** (Flask, Flask-SQLAlchemy)
+- **PostgreSQL** (Banco de dados)
+- **Docker** (Gerenciamento de contêineres)
+- **HTML/CSS** (Interface do usuário)
+
+---
+
+## Como Executar o Projeto
+
+1. **Pré-requisitos**:
+   - Docker e Docker Compose instalados.
+
+2. **Clone o repositório**:
+   ```bash
+   git clone <URL_DO_REPOSITORIO>
+   cd nailurl
+   ```
+
+3. **Configure as variáveis de ambiente**:
+   Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis:
+   ```env
+   POSTGRES_HOST=db
+   POSTGRES_USER=seu_usuario
+   POSTGRES_PASSWORD=sua_senha
+   POSTGRES_DB=nailurl
+   POSTGRES_PORT=5432
+   ```
+
+4. **Inicie os contêineres**:
+   Construa e inicie os contêineres com:
    ```bash
    docker-compose up --build
    ```
-   
-   O parâmetro `--build` garante que a imagem da sua aplicação Flask seja construída antes de iniciar os contêineres. Isso é especialmente importante na primeira execução ou após fazer alterações no código.
 
-3. Para executar os contêineres em segundo plano (modo detached):
-   ```bash
-   docker-compose up -d --build
-   ```
+5. **Acesse a aplicação**:
+   - Acesse o navegador em: [http://localhost:5000](http://localhost:5000).
 
-4. Para verificar os logs da aplicação enquanto ela está rodando em modo detached:
-   ```bash
-   docker-compose logs -f
-   ```
-   
-   Ou para ver apenas os logs de um serviço específico:
-   ```bash
-   docker-compose logs -f web
-   ```
+---
 
-5. Para parar a aplicação:
-   ```bash
-   docker-compose down
-   ```
-   
-   Se quiser remover os volumes também (cuidado, isso apagará os dados do banco):
-   ```bash
-   docker-compose down -v
-   ```
+## Comandos Úteis
 
-Uma vez iniciados, sua aplicação Flask estará disponível na porta que você definiu (provavelmente 5000), e poderá acessá-la em http://localhost:5000 no seu navegador ou fazer requisições para essa URL.
+- **Executar em segundo plano**:
+  ```bash
+  docker-compose up -d --build
+  ```
 
-O PostgreSQL estará rodando em um contêiner separado, e sua aplicação Flask se conectará a ele usando a string de conexão que você definiu na variável de ambiente DATABASE_URL.
+- **Parar os contêineres**:
+  ```bash
+  docker-compose down
+  ```
 
-Se precisar reconstruir apenas um serviço específico:
-```bash
-docker-compose up -d --build web
+- **Verificar logs**:
+  ```bash
+  docker-compose logs -f
+  ```
+
+- **Reconstruir apenas o serviço web**:
+  ```bash
+  docker-compose up -d --build web
+  ```
+
+---
+
+## Estrutura do Projeto
+
+```
+nailurl/
+├── app/
+│   ├── main.py          # Código principal da aplicação Flask
+│   ├── init_db.py       # Script para inicializar o banco de dados
+│   ├── templates/       # Arquivos HTML
+│   │   └── index.html   # Página inicial
+├── Dockerfile           # Configuração do Docker
+├── docker-compose.yml   # Configuração do Docker Compose
+├── requirements.txt     # Dependências do projeto
+├── .env                 # Variáveis de ambiente
+└── README.md            # Documentação do projeto
 ```
 
-Para verificar o status dos contêineres em execução:
-```bash
-docker-compose ps
-```
+---
+
+## Contribuição
+Sinta-se à vontade para abrir issues ou enviar pull requests para melhorias no projeto.
