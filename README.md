@@ -5,7 +5,7 @@
 
 ---
 
-![showcase](src/nailurl0.mp4)
+![showcase](src/nailurl0.gif)
 
 ---
 
