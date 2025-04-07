@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+    <title>nailurl</title>
+</head>
+<body>
+    <div>
+        <a href="/">
+            <h1>.NailURL</h1>
+        </a>
+    </div>
+    
+    <div>
+        <form method="POST" action="/encurtar">
+            <label for="url">Insira a URL:</label>
+            <input type="text" id="url" name="url" required>
+            <button type="submit">Encurtar</button>
+        </form>
+    </div>
+    
+    <div>
+        {% if short_url %}
+            <h2>URL encurtada:</h2>
+            <p><a href="{{ short_url }}" target="_blank">https://www.nailurl.com/{{ short_url }}</a></p>
+        {% endif %}
+    </div>
+    
+    <div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
